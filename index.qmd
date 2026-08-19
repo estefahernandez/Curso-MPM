@@ -1,0 +1,931 @@
+---
+title: "Curso: Medición de la Pobreza Multidimensional"
+subtitle: "Para Guinea Ecuatorial"
+author: "Estefanía Hernández Arroyave"
+date: last-modified
+lang: es
+bibliography: referencias.bib
+csl: apa.csl        # opcional, define el estilo de cita
+format:
+  html:
+    theme:
+      light: cosmo
+    lightbox: true
+    toc: false
+    number-sections: false
+    code-copy: true
+    code-overflow: wrap
+    highlight-style: github
+    smooth-scroll: true
+    anchor-sections: true
+    link-external-newwindow: true
+    fig-cap-location: bottom
+    tbl-cap-location: top
+execute:
+  eval: false
+  echo: true
+resources:
+  - files/
+---
+
+```{=html}
+<style>
+.course-materials {
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: .5rem;
+  padding: .8rem 1rem;
+  margin: 1rem 0 1.25rem 0;
+  background: var(--bs-tertiary-bg, #6a9bcc);
+}
+.course-materials p { margin: 0 0 .5rem 0; }
+.course-materials p:last-child { margin-bottom: 0; }
+.course-materials .btn { margin: 2px 4px 2px 0; }
+/* Pestañas de sesión más visibles, tipo botón */
+.panel-tabset > .nav-tabs { gap: .35rem; border-bottom: 2px solid var(--bs-border-color, #dee2e6); }
+.panel-tabset > .nav-tabs .nav-link {
+  font-weight: 600;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: .4rem .4rem 0 0;
+  background: var(--bs-tertiary-bg, #6a9bcc);
+  padding: .5rem 1rem;
+}
+.panel-tabset > .nav-tabs .nav-link.active {
+  background: #6a9bcc;
+  color: #fff;
+  border-color: #6a9bcc;
+}
+/* Texto del cuerpo justificado */
+p, li {
+  text-align: justify;
+  hyphens: auto;
+}
+</style>
+```
+
+Este material acompaña un curso de **tres sesiones** sobre medición de la pobreza multidimensional,
+orientado al contexto de Guinea Ecuatorial. El hilo conductor es el **método Alkire-Foster (AF)** de
+OPHI, aplicado a la **Segunda Encuesta Nacional de Hogares (ENH2)** del Instituto Nacional de
+Estadística. Utilice las **pestañas** que encontrará a continuación para abrir cada sesión y despliegue las secciones
+para ver más en detalle.
+
+::: {.course-materials}
+**Materiales generales**  
+[Base de datos (.dta)](files/Individuals_data.dta){.btn .btn-outline-secondary .btn-sm role="button" download="Individuals_data.dta"}
+[Cuestionario / diccionario](files/Cuestionario.xlsx){.btn .btn-outline-secondary .btn-sm role="button" download="Cuestionario.xlsx"}
+[Data / MPM](files/MPM_SM26.xlsx){.btn .btn-outline-secondary .btn-sm role="button" download="MPM_SM26.xlsx"}
+[Data / OPHI](files/Table 1 National Results MPI 2025.xlsx){.btn .btn-outline-secondary .btn-sm role="button" download="Table 1 National Results MPI 2025.xlsx"}
+:::
+
+::: {.panel-tabset}
+
+## Presentación
+
+### Objetivos de aprendizaje
+
+Al finalizar el curso, las personas participantes podrán:
+
+- **Definir** las dimensiones, variables, indicadores, umbrales y ponderaciones de un MPM.
+- **Aplicar** el método Alkire-Foster para identificar hogares pobres.
+- **Calcular** la incidencia ($H$), la intensidad ($A$) y el Indice de Pobreza Multidimensional [IPM] ($M_0$) en Stata con `mpitb`.
+- **Descomponer** el MPM por indicador y por grupo poblacional (nacional, área y provincia).
+- **Diseñar** de forma participativa un MPM para Guinea Ecuatorial.
+
+### Estructura del curso
+
+| Sesión | Tema | Enfoque |
+|---|---|---|
+| **1** | Dimensiones, variables, indicadores, umbrales y ponderaciones | Conceptual y Técnico (Stata) |
+| **2** | Cálculo del IPM y sus descomposiciones con `mpitb` | Técnico (Stata) |
+| **3** | Presentación de indicadores de Guinea Ecuatorial | Presentación e ilustración |
+
+: Progresión temática de las tres sesiones {.striped}
+
+### ¿Por qué una medida multidimensional?
+
+El enfoque monetario define como pobre a quien vive con un ingreso o consumo por debajo de una línea
+de pobreza. Es una medida potente pero incompleta: dos hogares con el mismo ingreso pueden vivir
+realidades muy distintas (uno puede tener ingreso suficiente y aun así carecer de agua potable,
+saneamiento, electricidad o educación). Siguiendo el **enfoque de capacidades de Amartya Sen**, lo que
+importa no es solo cuánto tiene una persona, sino qué puede efectivamente hacer y ser con lo que
+tiene. La pobreza multidimensional mide **privaciones simultáneas y superpuestas** en salud,
+educación y nivel de vida, entre otras dimensiones, y permite responder no solo cuántos son pobres,
+sino en qué lo son [@sen1999development].
+
+![Estructura de la Medida de Pobreza Multidimensional de Guinea Ecuatorial: dimensiones, indicadores, umbrales de privación y ponderaciones.](files/estructura_ipm_sesion1.svg){#fig-estructura-portada fig-align="center" width="95%" fig-alt="Diagrama de la estructura del IPM con las dimensiones de educación, infraestructura e ingreso monetario, sus indicadores, umbrales y pesos."}
+
+
+## Sesión 1
+
+### Dimensiones, variables, indicadores, umbrales y ponderaciones {.unnumbered}
+
+::: {.course-materials}
+**Materiales · Sesión 1**  
+[Presentación (PDF)](files/presentacion_sesion1.pdf){.btn .btn-outline-primary .btn-sm role="button" download="presentacion_sesion1.pdf"}
+[Do-file 0 · Maestro](files/scripts/00_maestro.do){.btn .btn-outline-secondary .btn-sm role="button" download="00_maestro.do"}
+[Do-file 1 · Privaciones (MPM)](files/scripts/01_privaciones_MPM.do){.btn .btn-outline-secondary .btn-sm role="button" download="01_privaciones_MPM.do"}
+:::
+
+**Objetivo:** sentar las bases conceptuales del MPM: qué es una dimensión, cómo se traduce en
+indicadores medibles a partir de las variables de la encuesta, qué es un umbral de privación y cómo
+se asignan ponderaciones. 
+Material complementario: presentación de esta sesión y ejecicio practico para Guinea Ecuatorial.
+
+#### De la pobreza monetaria a la multidimensional
+
+- La **pobreza multidimensional** identifica *quién* es pobre y *en qué*, captura la **simultaneidad**
+  de privaciones y, por ser descomponible, **orienta la política pública** (agua, educación,
+  vivienda) y facilita el seguimiento de la meta ODS 1.2.
+- El **enfoque monetario** usa una única línea de ingreso o consumo. Es útil, pero no ve privaciones
+  que ocurren *al mismo tiempo* en el mismo hogar, solo pobreza monetaria.
+
+
+#### Conceptos clave (despliegue cada uno)
+
+::: {.callout-tip collapse="true" title="Dimensión"}
+Un aspecto del bienestar considerado intrínsecamente importante (educación, vivienda, ingreso). El
+MPM de Guinea Ecuatorial trabaja con **tres dimensiones**: 
+1. Educación
+2. Acceso a infraestructura básica
+3. Pobreza monetaria
+:::
+
+::: {.callout-tip collapse="true" title="Indicador"}
+La medida concreta y observable dentro de una dimensión. Una dimensión puede tener uno o varios
+indicadores. Aquí, **educación** tiene dos (logro y matrícula) e **infraestructura** tiene tres (electricidad,
+saneamiento y agua).
+:::
+
+::: {.callout-tip collapse="true" title="Variable"}
+La columna de la encuesta a partir de la cual se construye el indicador (por ejemplo, `q3_05_grado`
+para el grado educativo, `q1_03_edad` para la edad).
+:::
+
+
+
+#### Dada la Segunda Encuesta Nacional de Hogares (ENH2)
+El insumo es la ENH2 del Instituto Nacional de Estadística de Guinea Ecuatorial (INEGE). Sus módulos alimentan directamente cada dimension y sus indicadores.
+
+::: {.callout-note collapse="true" icon=false title="<i class='bi bi-bookmarks'></i> El IPM Global (OPHI-PNUD)"}
+El IPM Global 2025 cubre 109 países [@alkire2025globalmpi]. Usa tres dimensiones con peso $1/3$ cada
+una, y reparte ese peso a partes iguales entre los indicadores de cada dimensión.
+
+![Estructura del IPM Global (OPHI-PNUD): dimensiones, indicadores y ponderaciones.](files/estructura_ipm_global.svg){#fig-estructura-global fig-align="center" width="95%" fig-alt="Infográfico con las tres dimensiones del IPM Global (salud, educación y nivel de vida), sus indicadores y pesos."}
+:::
+
+::: {.callout-note collapse="true" icon=false title="<i class='bi bi-bookmarks'></i> Medida de Pobreza Multidimensional (MPM Banco Mundial)"}
+
+Las tres dimensiones del MPM Banco Mundial, teniendo en cuenta los módulos de la encuesta y su correspondencia con las dimensiones
+
+![Estructura del MPM de Guinea Ecuatorial: dimensiones, indicadores, pesos y umbrales de privación.](files/estructura_ipm_sesion1.svg){#fig-estructura-mpm fig-align="center" width="95%" fig-alt="Infográfico con las tres dimensiones del MPM (educación, infraestructura y monetaria), sus indicadores, pesos y umbrales de privación."}
+:::
+
+::: {.callout-note collapse="true" icon=false title="<i class='bi bi-bookmarks'></i> Diseño del MPM"}
+
+| Dimensión | Indicador | Variable base | Umbral de privación (hogar privado si…) | Peso |
+|---|---|---|---|---|
+| Educación | Logro educativo | `educat7`, `q1_03_edad` | ningún adulto (edad ≥ 15) ha completado primaria | 1/6 |
+| Educación | Matrícula escolar | `asistencia_escolar`, `q1_03_edad` | al menos un niño (7–14) no está matriculado | 1/6 |
+| Infraestructura | Electricidad | `electricity` | el hogar no tiene acceso a electricidad | 1/9 |
+| Infraestructura | Saneamiento | `imp_san_rec` | el hogar no tiene saneamiento mejorado | 1/9 |
+| Infraestructura | Agua | `imp_wat_rec` | el hogar no tiene agua potable mejorada | 1/9 |
+| Monetaria | Pobreza monetaria | `pcexp_ppp` | gasto per cápita bajo la línea (PPA 2021) | 1/3 |
+
+:::
+
+
+#### De la variable al indicador: construcción en Stata (despliegue cada indicador)
+
+Extractos reales de `01_privaciones_MPM.do` (variante estándar MPM). Cada indicador es una decisión
+de medición explícita y reproducible.
+
+::: {.callout-note collapse="true" icon=false title="<i class='bi bi-alt'></i> Logro educativo"}
+Un hogar está privado si **ningún adulto** (en edad de haber alcanzado el grado 9) ha completado al
+menos la educación primaria.
+
+```stata
+* Umbral de edad para "adulto" a efectos de logro educativo
+global eduage 15   // primaria inicia a los 7 años; edad mínima para considerar "adulto"
+
+* Individuo con nivel básico de educación (primaria completa o más)
+gen temp2 = 1 if q1_03_edad>=$eduage & q1_03_edad~=. & educat7>=3 & educat7~=.
+
+* Cantidad de adultos con nivel apropiado por hogar
+bys hhid: egen temp3 = sum(temp2)
+
+* El hogar está privado si NINGÚN adulto alcanza el nivel
+gen dep_educ_com = 0
+    replace dep_educ_com = 1 if temp3==0
+la var dep_educ_com "MPM: Privado si el hogar NO tiene adultos $eduage+ con primaria completa"
+```
+:::
+
+::: {.callout-note collapse="true" icon=false title="<i class='bi bi-alt'></i> Matrícula escolar"}
+Un hogar está privado si tiene **al menos un niño en edad escolar (7 a 14 años) que no asiste** a la
+escuela.
+
+```stata
+global lbage 7    // edad mínima escolar
+global ubage 14   // edad máxima considerada (8.º grado / ESBA 2)
+
+* Niños en "edad escolar" (universo del indicador)
+gen edad_escolar = (q1_03_edad>=$lbage & q1_03_edad<=$ubage)
+bys hhid: egen cant_edadescolar = sum(edad_escolar)
+
+* Niños en edad escolar que NO están matriculados
+gen no_matriculado = (q1_03_edad>=$lbage & q1_03_edad<=$ubage & asistencia_escolar!=1)
+    replace no_matriculado=. if q1_03_edad<$lbage | q1_03_edad>$ubage
+bys hhid: egen cant_no_matriculados = sum(no_matriculado)
+
+* El hogar está privado si hay al menos un niño sin matricular
+gen dep_educ_enr = 0
+    replace dep_educ_enr = 1 if cant_no_matriculados>0
+    replace dep_educ_enr = 0 if cant_edadescolar==0   // sin niños en edad escolar: no privado
+```
+:::
+
+::: {.callout-note collapse="true" icon=false title="<i class='bi bi-alt'></i> Electricidad, saneamiento y agua"}
+El hogar está privado si carece del servicio mejorado correspondiente.
+
+```stata
+* Electricidad: privado si no tiene acceso
+gen dep_infra_elec = (electricity==0) if electricity~=.
+
+* Saneamiento: privado si no tiene acceso a saneamiento mejorado (imp_san_rec, según GMD)
+gen dep_infra_imps = (imp_san_rec==0) if imp_san_rec~=.
+
+* Agua: privado si no tiene acceso a agua potable mejorada (imp_wat_rec, según GMD)
+gen dep_infra_impw = (imp_wat_rec==0) if imp_wat_rec~=.
+```
+:::
+
+::: {.callout-note collapse="true" icon=false title="<i class='bi bi-alt'></i> Pobreza monetaria"}
+Compara el gasto per cápita en PPA contra la línea internacional de la variante MPM (3,00 USD PPA 2021).
+
+```stata
+gen double welfare_ppp = pcexp_ppp
+gen dep_poor1 = welfare_ppp < 3 if welfare_ppp~=.
+label var dep_poor1 "Pobreza monetaria internacional. Línea: 3.00 USD - PPA 2021"
+
+* `apoverty` también permite obtener indicadores de pobreza directamente
+* a partir del agregado de bienestar (pcexp_ppp) y la línea de referencia (zref)
+apoverty pcexp_ppp [aw = weight_hh], varpl(zref) gen(monetary)
+```
+:::
+
+::: {.callout-warning collapse="true" icon=false title="<i class='bi bi-arrow-right-circle'></i> Buenas prácticas de medición"}
+1. **Cada elección debe ser justificable** —normativa, empírica o políticamente.
+2. **El nivel de análisis importa.** La privación se define a nivel de **hogar** y se atribuye a todas
+   las personas del hogar (ponderando por `weight_hh*hhsize`).
+3. **Reproducibilidad.** Umbrales como `$eduage` o `$lbage`/`$ubage` se fijan como *globals* al
+   inicio, de modo que cambiarlos es transparente y trazable.
+:::
+
+::: {.callout-important collapse="true" title="¿Por qué no se calculó el IPM Global de OPHI en Guinea Ecuatorial?"}
+El IPM Global de OPHI-PNUD requiere tres dimensiones —salud, educación y nivel de vida— con dos
+indicadores específicos de salud: nutrición, medida mediante datos antropométricos (talla y peso
+tomados directamente a los miembros del hogar), y mortalidad infantil, obtenida a partir de un
+módulo de historia de fecundidad.
+
+La Segunda Encuesta Nacional de Hogares (ENH2) de Guinea Ecuatorial no incluye ninguno de los dos:
+su Sección 4 de Salud registra enfermedades autorreportadas en los últimos 30 días (donde
+"desnutrición" es solo una opción dentro de una lista de padecimientos, no una medición
+antropométrica), y no existe un módulo de historia de fecundidad que permita calcular mortalidad
+infantil. Al no contar con las variables necesarias para construir la dimensión de salud tal como
+la define la metodología de OPHI, no fue posible calcular el IPM Global con esta encuesta. Por ese
+motivo, el curso trabaja con el MPM (Medida de Pobreza Multidimensional) de tres dimensiones
+—educación, infraestructura y pobreza monetaria—, que sí es viable con las variables disponibles
+en la ENH2.
+:::
+
+
+#### Recursos complementarios (OPHI)
+
+- [Portal de formación en línea de OPHI](https://ophi.org.uk/training/online-training-portal) [@ophi_trainingportal]: materiales introductorios sobre el IPM y el método AF.
+- [Método Alkire-Foster (OPHI)](https://ophi.org.uk/research/af-method) [@ophi_afmethod]: página de referencia del método AF.
+- Guía paso a paso para diseñar un IPM nacional [@undpophi2019handbook].
+- Manual de referencia del método [@alkire2015multidimensional].
+
+#### Ejercicios de la Sesión 1
+
+1. ¿Por qué la privación se define a nivel de hogar y no de individuo?
+
+## Sesión 2
+
+### Cálculo del IPM y sus descomposiciones con `mpitb` {.unnumbered}
+
+::: {.course-materials}
+**Materiales · Sesión 2**  
+[Presentación (PDF)](files/presentacion_sesion2.pdf){.btn .btn-outline-primary .btn-sm role="button" download="presentacion_sesion2.pdf"}
+:::
+
+**Objetivo.** Calcular el IPM y sus descomposiciones aplicando el método Alkire-Foster:
+identificación de hogares pobres, cálculo de la incidencia ($H$), la intensidad ($A$) y el IPM ($M_0$),
+y descomposiciones por indicador y por grupo poblacional.
+
+#### Repaso: de la matriz de indicadores al IPM
+
+Con lo definido en la Sesión 1 (dimensiones, indicadores, umbrales y ponderaciones) se construye,
+para cada hogar, una **matriz de logros**; al aplicar los umbrales de privación se obtiene la
+**matriz de privaciones** $g_{ij}$ (1 si el hogar está privado, 0 si no). El método Alkire-Foster
+parte exactamente de esa matriz.
+
+| Hogar | Educación | Agua | Saneamiento | Electricidad | Monetario | Peso total $c_i$ |
+|---|---|---|---|---|---|---|
+| H1 | 1 | 0 | 0 | 0 | 1 | 0.40 |
+| H2 | 0 | 0 | 0 | 0 | 0 | 0.00 |
+| H3 | 1 | 1 | 1 | 0 | 1 | 0.80 |
+| H4 | 0 | 1 | 0 | 0 | 0 | 0.13 |
+| H5 | 1 | 0 | 1 | 1 | 1 | 0.60 |
+
+: Ejemplo de matriz de privaciones (1 = privado; $c_i$ = conteo ponderado) {.striped .hover}
+
+#### El método Alkire-Foster paso a paso (despliegue cada paso)
+
+El método AF usa una **doble identificación (dual cutoff)**: un umbral *dentro* de cada indicador y
+otro *entre* indicadores.
+
+::: {.callout-tip collapse="true" title="Paso 1 · Matriz de privaciones"}
+Para cada hogar $i$ e indicador $j$, se define $g_{ij}=1$ si el hogar está privado y $g_{ij}=0$ en
+caso contrario.
+:::
+
+::: {.callout-tip collapse="true" title="Paso 2 · Puntaje de privación ponderado"}
+Se suma sobre indicadores usando los pesos $w_j$ (con $\sum_j w_j = 1$):
+
+$$
+c_i \;=\; \sum_{j=1}^{d} w_j \, g_{ij}
+$$
+:::
+
+::: {.callout-tip collapse="true" title="Paso 3 · Identificación (segundo umbral k)"}
+Un hogar es **pobre multidimensional** si su puntaje alcanza el umbral $k$. Aquí $k = 1/3$ (33 %):
+
+$$
+i \text{ es pobre} \iff c_i \geq k
+$$
+
+Valores bajos de $k$ se acercan al enfoque de unión; valores altos, al de intersección.
+:::
+
+::: {.callout-tip collapse="true" title="Paso 4 · Censura"}
+$c_i(k) = c_i$ si $c_i \geq k$, y $c_i(k)=0$ en caso contrario. Solo cuentan las privaciones de quienes
+son pobres.
+:::
+
+::: {.callout-tip collapse="true" title="Paso 5 · Agregación ($H$, $A$, $M_0$)"}
+$$
+H = \frac{q}{n}, \qquad A = \frac{\sum_{i=1}^{n} c_i(k)}{q}, \qquad M_0 = H \times A
+$$
+
+$n$ es la población total y $q$ el número de pobres. La **incidencia** $H$ es la proporción de pobres;
+la **intensidad** $A$ es el promedio de privaciones de los pobres; y el **IPM** $M_0$ combina ambas.
+:::
+
+![Flujo del método Alkire-Foster: de la matriz de privaciones a $H$, $A$ y $M_0$, aplicando el doble corte ($k = 1/3$).](files/flujo_af.svg){#fig-flujo-af fig-align="center" width="100%" fig-alt="Diagrama de flujo con matriz de privaciones, puntaje ponderado, la decisión c_i ≥ k, las ramas pobre / no pobre, y el cálculo de H, A y M0 con sus descomposiciones."}
+
+::: {.callout-note collapse="true" title="Ejemplo numérico: cálculo de $H$, $A$ y $M_0$"}
+Con la matriz anterior y $k = 1/3$:
+
+| Hogar | $c_i$ | ¿Pobre? | Contribuye a $A$ |
+|---|---|---|---|
+| H1 | 0.40 | Sí | 0.40 |
+| H2 | 0.00 | No | — |
+| H3 | 0.80 | Sí | 0.80 |
+| H4 | 0.13 | No | — |
+| H5 | 0.60 | Sí | 0.60 |
+
+$q = 3$ pobres de $n = 5$ → $H = 0.60$. $A = (0.40+0.80+0.60)/3 = 0.60$. Por tanto
+$M_0 = H \times A = 0.36$.
+:::
+
+::: {.callout-important collapse="true" title="Propiedades que dan robustez al método"}
+- **Monotonicidad dimensional:** si una persona pobre pierde un logro adicional, $M_0$ no puede disminuir.
+- **Descomponibilidad por subgrupo:** el IPM nacional es el promedio ponderado por población de los
+  IPM de cada grupo.
+- **Descomponibilidad por indicador:** $M_0$ se reescribe como la suma de la contribución de cada
+  indicador. Estas dos descomposiciones son las que hacen que el método sea tan útil para la política pública.
+:::
+
+#### De los indicadores a las privaciones
+
+::: {.callout-note collapse="true" title="Generar las variables de privación (01_privaciones_MPM.do)"}
+Recapitulando los 6 indicadores del MPM: educación (`dep_educ_com`, `dep_educ_enr`) se construyó
+paso a paso en la Sesión 1; aquí se completa con infraestructura y monetaria.
+
+```stata
+* Educación (ver construcción completa en la Sesión 1)
+*   dep_educ_com -> ningún adulto (15+) completó primaria
+*   dep_educ_enr -> al menos un niño (7-14) en edad escolar no matriculado
+
+* Privación en electricidad
+gen dep_infra_elec = (electricity==0) if electricity~=.
+
+* Privación en saneamiento mejorado
+gen dep_infra_imps = (imp_san_rec==0) if imp_san_rec~=.
+
+* Privación en agua potable mejorada
+gen dep_infra_impw = (imp_wat_rec==0) if imp_wat_rec~=.
+
+* Privación monetaria (línea 3,00 USD PPA 2021 para la variante MPM base)
+gen double welfare_ppp = pcexp_ppp
+gen dep_poor1 = welfare_ppp < 3 if welfare_ppp~=.
+```
+El resultado es una fila por hogar con una columna de privación por cada uno de los 6 indicadores:
+la **matriz de privaciones** $g_{ij}$.
+:::
+
+#### Cálculo del IPM con `mpitb` (despliegue cada paso)
+
+El paquete `mpitb` [@suppa2023mpitb], desarrollado y mantenido por OPHI, implementa el método AF:
+**definir** la estructura (`mpitb set`), **estimar** (`mpitb est`) y **leer** los resultados.
+Requiere una base en formato *wide* (una fila por hogar, una columna 0/1 por indicador), un
+ponderador muestral y, si aplica, variables de estrato y conglomerado para `svyset`.
+
+::: {.callout-note collapse="true" title="0 · Instalación"}
+```stata
+ssc install moremata, replace
+ssc install mpitb, replace
+which mpitb
+help mpitb
+```
+:::
+
+::: {.callout-note collapse="true" title="1 · Preparar los datos"}
+```stata
+use "${gdStata}/Data Clean $MPM/DataDeprivations${MPM}.dta", clear
+
+rename dep_* *
+rename infra_* i_*
+rename educ_* e_*
+
+duplicates drop hhid, force
+```
+:::
+
+::: {.callout-note collapse="true" title="2 · Definir la estructura del índice (mpitb set)"}
+```stata
+mpitb set, name(GNQ) ///
+    d1(e_com e_enr, na(educ)) ///
+    d2(i_elec i_imps i_impw, na(infra)) ///
+    d3(poor1, na(mon))
+```
+
+- **Dimensión 1 (educ):** logro educativo (`e_com`) y matrícula (`e_enr`).
+- **Dimensión 2 (infra):** electricidad (`i_elec`), saneamiento (`i_imps`) y agua (`i_impw`).
+- **Dimensión 3 (mon):** pobreza monetaria (`poor1`).
+:::
+
+::: {.callout-note collapse="true" title="3 · Declarar el diseño muestral"}
+```stata
+gen hhweight = weight_hh*hhsize
+egen strata = group(cod_provincia cod_CV_CP)
+svyset hhid [iw = hhweight], clear strata(strata)
+```
+Utilice el diseño complejo de la encuesta (ponderadores y estratos) para obtener errores estándar
+correctos.
+:::
+
+::: {.callout-note collapse="true" title="4 · Estimar el IPM (mpitb est)"}
+```stata
+rename (cod_CV_CP cod_provincia) (area prov)
+
+mpitb est, name(GNQ) klist(33) weights(equal) ///
+    measures(all) indmeas(all) aux(hd) svy ///
+    over(area prov cities) ///
+    lsave("${gdStata}/${MPM}_results.dta", replace) lfr(myresults, replace) ///
+    dtasave("${gdStata}/${MPM}_results_microdata.dta", replace)
+```
+
+- `klist(33)` — umbral de pobreza $k = 33\%$ ($1/3$). Utilice `klist(20 25 33 40)` para el análisis de sensibilidad.
+- `weights(equal)` — ponderaciones iguales entre dimensiones.
+- `measures(all)` — calcula $M_0$, $H$, $A$ y medidas asociadas.
+- `indmeas(all)` con `aux(hd)` — descomposiciones **por indicador**.
+- `over(area prov cities)` — descomposiciones **por grupo poblacional**.
+- `svy` — usa el diseño muestral declarado con `svyset`.
+:::
+
+#### Interpretación de la salida de `mpitb est`
+
+| Campo | Significado |
+|---|---|
+| `measure` | Medida reportada: `M0`, `H`, `A`, `hd`, `hdk`, etc. |
+| `loa` | Nivel de agregación (`nat` = nacional, o el subgrupo del `over()`) |
+| `k` | Valor del umbral de pobreza $k$ evaluado |
+| `b` | Estimación puntual de la medida |
+| `se` | Error estándar (ajustado por el diseño si se usó `svy`) |
+
+: Campos de la base de resultados de `mpitb` {.striped .hover}
+
+#### Lectura de resultados (despliegue cada tabla)
+
+::: {.callout-note collapse="true" title="Medidas nacionales: incidencia, intensidad e IPM"}
+```stata
+cwf myresults
+li measure b se if inlist(measure,"M0","H","A") & loa == "nat" & k == 33, noob
+```
+
+```text
+  +---------------------------+
+  | measure        b       se |
+  |---------------------------|
+  |      M0   0.0859   0.0032 |   <- IPM (adjusted headcount ratio)
+  |       H   0.1991   0.0067 |   <- Incidencia (% población pobre)
+  |       A   0.4314   0.0051 |   <- Intensidad (privaciones promedio)
+  +---------------------------+
+```
+
+Con $k = 33\%$, el **19,9 %** de los hogares de Guinea Ecuatorial es identificado como pobre
+multidimensional ($H = 0{,}1991$), y entre esos hogares pobres la privación promedio es del
+**43,1 %** de las dimensiones ponderadas ($A = 0{,}4314$). El IPM resultante es
+$M_0 = H \times A = 0{,}0859$.
+
+Recuerde $M_0 = H \times A$: $H$ responde *¿cuántos son pobres?* y $A$, *¿qué tan pobres son?*
+
+<!-- REVISAR: resultados incorporados el 2026-08-11 a partir de
+Pueba/Do-files/00_maestro.log y Pueba/1-Data/MPM_results.dta (corrida de mpitb con klist(33),
+weights(equal), datos ENH2 n=7.069 hogares). Verifica que esta corrida sea la que quieres publicar
+como oficial antes de compartir el sitio (por ejemplo, que no haya una corrida más reciente o con
+otra especificación de dimensiones/umbrales). -->
+:::
+
+::: {.callout-note collapse="true" title="Descomposición por indicador"}
+```stata
+tabdisp indicator measure if inlist(measure,"hd","hdk") & loa == "nat" & inlist(k,33,.), cell(b)
+```
+
+```text
+--------------------------
+          |    measure
+indicator |     hd     hdk
+----------+---------------
+    e_com | 0.0772  0.0442
+    e_enr | 0.0270  0.0141
+   i_elec | 0.1809  0.1241
+   i_imps | 0.3706  0.1553
+   i_impw | 0.3135  0.1424
+    poor1 | 0.0879  0.0879
+--------------------------
+  hd  = tasa de privación sin censurar (toda la población)
+  hdk = tasa de privación censurada (solo entre los pobres) -> base de la contribución
+```
+
+Los dos indicadores con mayor privación censurada (`hdk`, la que efectivamente contribuye al IPM)
+son **saneamiento** (`i_imps`, 15,5 %) y **agua** (`i_impw`, 14,2 %), seguidos de
+**electricidad** (`i_elec`, 12,4 %): la dimensión de infraestructura concentra la mayor parte de la
+privación entre los hogares pobres.
+:::
+
+::: {.callout-note collapse="true" title="Descomposición por grupo poblacional"}
+```stata
+use "${gdStata}/${MPM}_results.dta", clear
+sort measure loa subg
+list measure loa subg b se if measure=="M0", noob
+```
+
+```text
+  loa       subg          M0
+  ----------------------------------
+  nat       (nacional)    0.0859
+
+  area      Urbano        0.0402
+  area      Rural         0.1865
+
+  cities    Malabo        0.0124
+  cities    Resto urbano  0.0530
+  cities    Rural         0.1865
+
+  prov      Litoral       0.0540
+  prov      Bioko Norte   0.0128
+  prov      Bioko Sur     0.0809
+  prov      Centro Sur    0.1545
+  prov      Kié-Ntem      0.2026
+  prov      Wele-Nzas     0.0998
+  prov      Annobón       0.0832
+  ----------------------------------
+```
+
+La pobreza multidimensional es marcadamente más alta en el área **rural** ($M_0 = 0{,}1865$) que en
+la **urbana** ($M_0 = 0{,}0402$), y dentro de lo urbano, **Malabo** tiene el IPM más bajo del país
+($M_0 = 0{,}0124$). Por provincia, **Kié-Ntem** concentra la mayor pobreza multidimensional
+($M_0 = 0{,}2026$) y **Bioko Norte** la menor ($M_0 = 0{,}0128$).
+:::
+
+::: {.callout-note collapse="true" title="Microdatos con identificación de pobreza"}
+```stata
+use "${gdStata}/${MPM}_results_microdata.dta", clear
+gen poor_multi = (c_equal >= 1/3)
+tab poor_multi [aw = hhweight]
+```
+:::
+
+::: {.callout-warning collapse="true" title="Errores comunes al usar mpitb"}
+- Incluir variables que **no son estrictamente binarias** (0/1) dentro de `d1()`/`d2()`/`d3()`.
+- No declarar correctamente el `svyset` antes de usar la opción `svy`.
+- Olvidar `duplicates drop` antes de `mpitb set`, generando conteos incorrectos por hogares
+  duplicados.
+- Confundir el peso del hogar (`weight_hh`) con el peso ajustado por tamaño (`weight_hh*hhsize`)
+  cuando el análisis es a nivel de personas.
+- No revisar los valores perdidos (missing) en los indicadores antes de calcular el IPM.
+:::
+
+::: {.callout-important collapse="true" title="Lista de comprobación antes de publicar un IPM"}
+- **Datos:** ¿sin duplicados por hogar? ¿indicadores realmente binarios (0/1)?
+- **Diseño muestral:** ¿`svyset` declarado con estrato y peso correctos? ¿ponderación coherente con la
+  unidad de análisis?
+- **Resultados:** ¿$M_0 = H \times A$ se cumple exactamente? ¿se probó la sensibilidad a distintos
+  valores de $k$?
+- **Reproducibilidad:** ¿se guardó el do-file completo, no solo los resultados?
+:::
+
+#### Recursos complementarios (OPHI y `mpitb`)
+
+- [Introducción técnica al método Alkire-Foster (OPHI)](https://ophi.org.uk/research/af-method) [@ophi_afmethod].
+- Artículo original del método [@alkire2011counting].
+- Documentación del paquete `mpitb` [@suppa2023mpitb].
+
+#### Ejercicios de la Sesión 2
+
+1. Cambie `klist(33)` por `klist(20 33 50)` y observe cómo varían $H$, $A$ y $M_0$.
+2. Identifique los **dos indicadores que más contribuyen** al IPM nacional.
+3. Compare el IPM entre área urbana y rural y redacte dos frases de política.
+
+## Sesión 3
+
+### Taller: diseño de un IPM adaptado a Guinea Ecuatorial {.unnumbered}
+
+::: {.callout-note collapse="true" title="Variante ampliada MPM+ (umbrales más exigentes)"}
+Los do-files contemplan una versión **MPM+** con umbrales más exigentes: logro de secundaria (ESBA 4)
+en vez de primaria, matrícula que penaliza el retraso escolar, electricidad que penaliza cortes de
+suministro, y una línea monetaria más alta (8,30 en PPA 2021 en lugar de 3,00). El mismo marco AF
+admite umbrales distintos según la ambición de la política.
+
+![Estructura del MPM+ de Guinea Ecuatorial: dimensiones, indicadores, pesos y umbrales de privación.](files/estructura_ipm_mpmplus.svg){#fig-estructura-mpmplus fig-align="center" width="95%" fig-alt="Infográfico con las tres dimensiones del MPM+ (educación, infraestructura y monetaria), sus indicadores, pesos y umbrales de privación."}
+
+:::
+
+::: {.course-materials}
+**Materiales · Sesión 3**  
+[Presentación (PDF)](files/presentacion_sesion3.pdf){.btn .btn-outline-primary .btn-sm role="button" download="presentacion_sesion3.pdf"}
+[Do-file 3 · mpitb](files/scripts/03_calculo_mpm_mpitb.do){.btn .btn-outline-secondary .btn-sm role="button" download="03_calculo_mpm_mpitb.do"}
+[Do-file 4 · Figuras](files/scripts/04_exportar_figuras.do){.btn .btn-outline-secondary .btn-sm role="button" download="04_exportar_figuras.do"}
+:::
+
+**Objetivo.** Sesión práctica y participativa para **diseñar de forma colaborativa** un IPM ajustado al
+contexto de Guinea Ecuatorial, apoyada en los materiales de OPHI sobre los pasos para diseñar un IPM
+nacional. El énfasis está en la deliberación: las decisiones deben justificarse.
+
+#### Pasos para diseñar un IPM nacional (marco OPHI)
+
+Marco de OPHI para el diseño de un IPM nacional [@undpophi2019handbook]:
+
+![Cómo se diseña un IPM nacional: los ocho pasos del marco de OPHI, en tres fases (marco, diseño de la medida, y cálculo y difusión).](files/pasos_ipm.svg){#fig-pasos-ipm fig-align="center" width="100%" fig-alt="Infográfico con los ocho pasos para diseñar un IPM nacional agrupados en tres fases: marco (propósito y unidad), diseño de la medida (dimensiones, indicadores, umbrales y ponderaciones) y cálculo y difusión (umbral k y estimación)."}
+
+#### Conociendo la ENH2: estructura y cobertura
+
+La Segunda Encuesta de Hogares de Guinea Ecuatorial (ENH2) [@inege2023enh2] contiene módulos de vivienda, servicios, activos,
+educación, salud, empleo y gasto de consumo, e incluye un agregado de bienestar per cápita en PPA
+2021 (`pcexp_ppp`) y líneas de pobreza de referencia. Se trabaja con tres bases:
+
+| Base | Unidad | Contenido | Enlace |
+|---|---|---|---|
+| `Households.dta` | 1 fila por hogar | Vivienda, servicios, activos, gasto | `interview__key` |
+| `Individuals.dta` | 1 fila por persona | Edad, sexo, educación, salud, empleo (521 variables) | `interview__key` |
+| `Welfare` | Agregado de consumo | `pcexp_ppp`, líneas `zali0` y `zref` | — |
+
+: Las tres bases de trabajo de la ENH2 {.striped .hover}
+
+La muestra cubre **7.069 hogares**, en **dos regiones** (Continental e Insular) y **siete provincias**:
+
+| Provincia | Región | Hogares en la muestra |
+|---|---|---|
+| Litoral | Continental | 1.493 |
+| Bioko Norte | Insular | 1.393 |
+| Wele-Nzás | Continental | 1.055 |
+| Kié-Ntem | Continental | 1.043 |
+| Bioko Sur | Insular | 987 |
+| Centro Sur | Continental | 915 |
+| Annobón | Insular | 183 |
+
+: Distribución de hogares por provincia (`CleanDB_Individual_POV.dta`, ENH2) {.striped .hover}
+
+<!-- REVISAR: se corrigió esta tabla el 2026-08-11. La versión anterior indicaba 7.257 hogares
+totales y una submuestra de 7.069 "con información completa para pobreza monetaria" (variable
+`weight_hh_pov`). No se encontró ningún archivo en Pueba/1-Data ni en el insumo crudo
+(GNQ-PA/1-Data/Clean data/II-ENH-2023/CleanDB_Individual_POV.dta, la fuente que usan los do-files)
+que respalde la cifra de 7.257 ni la variable `weight_hh_pov`: los tres archivos disponibles
+coinciden en 7.069 hogares con el desglose por provincia ahora mostrado. Si 7.257 proviene de un
+informe oficial de INEGE que yo no tengo en estas carpetas, avísame para restaurar esa cifra con la
+fuente correcta. -->
+
+::: {.callout-note collapse="true" title="Variables clave del diccionario ENH2"}
+- **Identificación:** `interview__key` (hogar), `hhsize` (tamaño), `weight_hh` (ponderador).
+- **Vivienda y servicios:** `q2_25_aguaTomar` (agua), `q2_28_aseo` (saneamiento),
+  `q2_32_ServEletricidad` (electricidad).
+- **Educación:** `q1_03_edad` (edad), `q3_05_grado` (grado más alto), `asistencia_escolar`.
+- **Bienestar monetario:** `pcexp_ppp` (gasto per cápita PPA 2021), `zref` y `zali0` (líneas).
+
+`electricity`, `imp_wat_rec` e `imp_san_rec` son variables **ya recodificadas** en el pipeline de
+limpieza a partir de las preguntas crudas de la ENH2.
+:::
+
+#### Actividad 1 · Dimensiones e indicadores
+
+La propuesta base (pipeline GNQ) usa tres dimensiones. El taller invita a evaluar si conviene
+ampliarla (la ENH2 tiene módulos de salud y empleo que podrían aportar indicadores si se justifican
+conceptualmente).
+
+| Dimensión | Indicador | Variable(s) ENH2 |
+|---|---|---|
+| Educación | Logro educativo de adultos | `q3_05_grado`, `q1_03_edad` → `educat7` |
+| Educación | Asistencia escolar de niños/as | `asistencia_escolar`, `q1_03_edad` |
+| Vivienda y servicios | Acceso a electricidad | `electricity` (`q2_32_ServEletricidad`) |
+| Vivienda y servicios | Agua mejorada | `imp_wat_rec` (`q2_25_aguaTomar`) |
+| Vivienda y servicios | Saneamiento adecuado | `imp_san_rec` (`q2_28_aseo`) |
+| Monetario | Gasto per cápita bajo la línea | `pcexp_ppp` (Welfare) |
+
+: Tabla de referencia dimensión → indicador → variable {.striped .hover}
+
+::: {.callout-tip collapse="true" title="Instrucciones · Actividad 1 (20 min)"}
+1. En grupos, revisen la propuesta base de tres dimensiones (educación, vivienda/servicios, monetario).
+2. Decidan si la mantienen, la amplían (ej. salud) o la ajustan, **justificando cada cambio con un
+   criterio de Alkire**.
+3. Para cada dimensión, enumeren de 1 a 3 indicadores concretos y la variable de la ENH2 que los mediría.
+4. Escriban su propuesta en el formato: **Dimensión → Indicador → Variable ENH2**.
+:::
+
+#### Actividad 2 · Umbrales, ponderaciones y k
+
+::: {.callout-note collapse="true" title="Umbrales de privación propuestos (pipeline GNQ)"}
+| Indicador | Umbral de privación propuesto |
+|---|---|
+| Logro educativo | Ningún adulto (15+) del hogar completó primaria |
+| Asistencia escolar | Al menos un niño en edad escolar (7–14) no asiste |
+| Electricidad | El hogar no tiene acceso al servicio eléctrico |
+| Saneamiento | El hogar no tiene saneamiento mejorado |
+| Agua | El hogar no tiene una fuente de agua mejorada |
+| Monetario | Gasto per cápita inferior a USD 3,00 (PPA 2021) |
+
+: Umbrales adaptados de `01_privaciones_MPM.do`
+:::
+
+**Propuesta de ponderación anidada (tres dimensiones):** Educación $1/3$ (logro $1/6$ + asistencia
+$1/6$); Vivienda y servicios $1/3$ (electricidad, agua, saneamiento, $1/9$ cada uno); Monetario $1/3$.
+
+::: {.callout-tip collapse="true" title="Análisis de sensibilidad del umbral k"}
+- **$k = 20\%$:** se acerca al enfoque de unión, identifica a más hogares como pobres.
+- **$k = 33\%$ ($1/3$):** el estándar internacional; balance entre amplitud y profundidad.
+- **$k = 40$–$50\%$:** más restrictivo, solo los hogares con privaciones más severas y simultáneas.
+- **Buena práctica:** calcular el IPM con varios valores (`klist(20 25 33 40)`) y documentar cómo
+  cambian $H$, $A$ y $M_0$.
+:::
+
+::: {.callout-tip collapse="true" title="Instrucciones · Actividad 2 (20 min)"}
+1. Retomen la matriz dimensión-indicador de la Actividad 1.
+2. Para cada indicador, definan un umbral de privación concreto (usen la tabla como punto de partida).
+3. Propongan un esquema de ponderación (igual entre dimensiones, o justifiquen uno diferenciado).
+4. Elijan un valor de $k$ y expliquen por qué, considerando el análisis de sensibilidad.
+:::
+
+#### Del diseño al cálculo: el pipeline en Stata
+
+El pipeline de código refactorizado traduce la propuesta del taller en un IPM reproducible:
+
+- `00_maestro.do` — define la única ruta de proyecto a editar (`$gdRaiz`) y ejecuta los módulos en orden.
+- `01_privaciones_MPM.do` — construye las variables base por dimensión a partir de la ENH2 cruda y
+  aplica los umbrales de la variante MPM, generando las variables binarias de privación (0/1).
+- `03_calculo_mpm_mpitb.do` — corre `mpitb set` / `mpitb est` para obtener $H$, $A$, $M_0$ y
+  descomposiciones.
+- `04_exportar_figuras.do` — exporta a Excel y genera los gráficos nativos de Stata (dispersión,
+  boxplot, contribuciones al IPM, coeficientes de las regresiones).
+
+::: {.callout-note collapse="true" title="Plantilla de código para adaptar en el taller"}
+```stata
+* Reemplace indicadores y dimensiones según su propuesta
+mpitb set, name(EQUIPO) ///
+    d1(<indicadores dimensión 1>, na(<nombre1>)) ///
+    d2(<indicadores dimensión 2>, na(<nombre2>)) ///
+    d3(<indicadores dimensión 3>, na(<nombre3>))
+
+mpitb est, name(EQUIPO) klist(33) weights(equal) ///
+    measures(all) indmeas(all) aux(hd) svy over(area prov)
+```
+:::
+
+#### Ficha de diseño (actividad práctica)
+
+Trabajando en grupos, cada equipo produce una **ficha de diseño** de un IPM alternativo:
+
+| Elemento | Propuesta del equipo | Justificación |
+|---|---|---|
+| Dimensiones | | |
+| Indicadores por dimensión | | |
+| Umbrales de privación | | |
+| Ponderaciones | | |
+| Umbral de pobreza $k$ | | |
+| Fuente(s) de datos | | |
+
+: Ficha de diseño del IPM (una por equipo) {.striped}
+
+#### Comunicar resultados
+
+De la cifra técnica a una herramienta de decisión:
+
+- **Mapas por provincia** para visualizar dónde se concentra la pobreza multidimensional.
+- **Gráficos de contribución por indicador** (barras apiladas) para mostrar qué privaciones pesan más.
+- **Diagramas de Venn o UpSet** para la superposición de privaciones entre dimensiones.
+- **Series temporales** si hay más de una ronda de la encuesta.
+- **Un resumen ejecutivo** con los hallazgos clave, dirigido a los responsables de la toma de decisiones y sin tecnicismos.
+
+::: {.callout-important collapse="true" title="Lista de comprobación final del taller"}
+- **Diseño:** dimensiones justificadas y acotadas; indicadores con variable ENH2 identificada.
+- **Parámetros:** umbrales documentados; ponderaciones y $k$ con sensibilidad probada.
+- **Implementación:** pipeline de código limpio y reproducible; plan de comunicación de resultados.
+:::
+
+#### Cierre y síntesis
+
+Cada equipo presenta su ficha y su IPM. La discusión final compara resultados y decisiones,
+subrayando que la fortaleza del método Alkire-Foster está en hacer **transparentes y debatibles**
+todas las elecciones de medición. Un buen IPM nacional no copia el índice global: lo **traduce**, con
+rigor técnico y legitimidad participativa, a la realidad del país.
+
+#### Recursos complementarios (OPHI)
+
+- Guía de pasos para el diseño de un IPM nacional [@undpophi2019handbook].
+- Manual de referencia del método [@alkire2015multidimensional].
+- [Portal de formación en línea de OPHI](https://ophi.org.uk/training/online-training-portal) [@ophi_trainingportal].
+- [Ejemplos de IPM nacionales en política pública (OPHI)](https://ophi.org.uk/national-mpi-and-policy) [@ophi2024nationalmpi].
+
+:::
+
+```{=html}
+<script>
+(function () {
+  // ------------------------------------------------------------------
+  // BLOQUEO DE PESTAÑAS POR FECHA DE SESIÓN
+  // ------------------------------------------------------------------
+  // Oculta la pestaña (y su contenido) de cada sesión hasta el día en que
+  // corresponde verla, para que el sitio se vaya "abriendo" sesión a sesión
+  // conforme avanza el curso en Guinea Ecuatorial.
+  //
+  // IDs de las pestañas que genera Quarto para el panel-tabset de arriba
+  // (## Presentación / ## Sesión 1 / ## Sesión 2 / ## Sesión 3, en ese orden):
+  //   tabset-1-1 = Presentación  -> SIEMPRE visible (no aparece en `unlocks`)
+  //   tabset-1-2 = Sesión 1      -> SIEMPRE visible (no aparece en `unlocks`,
+  //                                  a propósito: la sesión 1 no se bloquea)
+  //   tabset-1-3 = Sesión 2      -> se BLOQUEA hasta la fecha indicada abajo
+  //   tabset-1-4 = Sesión 3      -> se BLOQUEA hasta la fecha indicada abajo
+  //
+  // Para agregar o quitar un bloqueo: agrega o quita su línea del objeto
+  // `unlocks`. Un id que NO está en `unlocks` nunca se oculta.
+  //
+  // Las fechas están en UTC pero representan la medianoche en Guinea
+  // Ecuatorial (WAT = UTC+1), por eso cada fecha "adelanta" 1 hora el día
+  // anterior (23:00 UTC del día antes = 00:00 WAT del día del desbloqueo).
+  // Ejemplo: "2026-08-20T23:00:00Z" = 21 de agosto de 2026, 00:00 en Malabo.
+  //
+  // Aviso: es un candado de cortesía en el navegador (compara la fecha del
+  // visitante), NO una restricción de acceso real — el contenido sigue
+  // estando en el HTML de la página para quien lo busque.
+  // ------------------------------------------------------------------
+  var unlocks = {
+    "tabset-1-3": new Date("2026-08-20T23:00:00Z"), // Sesión 2 se desbloquea el 21 ago 2026 (00:00 WAT)
+    "tabset-1-4": new Date("2026-08-27T23:00:00Z")  // Sesión 3 se desbloquea el 28 ago 2026 (00:00 WAT)
+  };
+
+  var now = new Date(); // instante actual de quien visita la página
+
+  Object.keys(unlocks).forEach(function (id) {
+    // Si la fecha de desbloqueo de esta sesión todavía no llegó, se oculta.
+    // Si ya llegó (now >= fecha de desbloqueo), no se hace nada y la pestaña
+    // queda visible con normalidad.
+    if (now < unlocks[id]) {
+      var tabLink = document.getElementById(id + "-tab"); // el link/botón de la pestaña
+      var pane = document.getElementById(id);              // el contenido de esa pestaña
+
+      if (tabLink) {
+        var li = tabLink.closest("li"); // el <li> que envuelve el link en el menú
+        if (li) li.style.display = "none"; // oculta la pestaña del menú
+      }
+      if (pane) pane.style.display = "none"; // oculta el contenido de la pestaña
+    }
+  });
+})();
+</script>
+```
+
+## Referencias {.unnumbered}
+
+::: {#refs}
+:::
+
+<!-- REVISAR: no encontré una URL pública de INEGE para citar la ENH2 con normas APA completas
+(institución editora, ciudad, enlace, fecha exacta de publicación). El año 2023 se tomó de la
+convención de nombres usada en los do-files (ENHGE / "II-ENH-2023"); confírmalo o indícame la
+referencia oficial si existe (ver entrada `inege2023enh2` en referencias.bib). -->
+
+::: {.callout-note appearance="minimal"}
+Documento elaborado en Quarto. El código Stata se muestra con fines didácticos a partir de los
+do-files del caso aplicado; los cálculos se ejecutan en Stata y los resultados se incorporan donde
+se indica.
+:::

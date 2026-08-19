@@ -1,0 +1,43 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - "files/"
+
+website:
+  title: "Curso IPM · Guinea Ecuatorial"
+  description: "Medición de la pobreza multidimensional con el método Alkire-Foster (OPHI)"
+  reader-mode: false
+  page-navigation: true
+  navbar:
+    background: primary
+    pinned: true
+    left:
+      - text: "Inicio"
+        href: index.qmd
+    right:
+      - text: "OPHI"
+        href: https://ophi.org.uk
+        target: _blank
+  page-footer:
+    center: "Curso IPM · Guinea Ecuatorial — elaborado en Quarto"
+
+# El código Stata no se ejecuta en el sitio (solo se muestra), por lo que
+# 'freeze' congela cualquier cómputo para que la publicación en CI sea
+# rápida y no requiera Stata, R ni Python en el servidor.
+execute:
+  freeze: auto
+
+format:
+  html:
+    theme:
+      light: cosmo
+    lang: es
+    toc: false
+    lightbox: true
+    code-copy: true
+    code-overflow: wrap
+    highlight-style: github
+    smooth-scroll: true
+    anchor-sections: true
+    link-external-newwindow: true
