@@ -1,0 +1,96 @@
+<svg viewBox="0 0 1160 1232" xmlns="http://www.w3.org/2000/svg" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    .title { font-weight: 700; } .name { font-weight: 700; } .frac { font-weight: 700; }
+  </style>
+  <rect x="0" y="0" width="1160" height="1232" fill="#ffffff"/>
+  <rect x="0" y="0" width="386.67" height="6" fill="#c05f3f"/>
+  <rect x="386.67" y="0" width="386.66" height="6" fill="#34689e"/>
+  <rect x="773.33" y="0" width="386.67" height="6" fill="#0f857b"/>
+  <text x="40" y="68" class="title" font-size="34" fill="#141413">Índice de Pobreza Multidimensional</text>
+  <rect x="726" y="45" width="150" height="34" rx="17" fill="#141413"/>
+  <text x="801" y="69" text-anchor="middle" class="name" font-size="18" fill="#ffffff">IPM Global</text>
+  <line x1="40" y1="96" x2="1120" y2="96" stroke="#141413" stroke-width="2"/>
+  <text x="40" y="122" font-size="16" fill="#4a4f57">OPHI y PNUD · IPM Global 2025 · 109 países · 3 dimensiones · 10 indicadores · umbral k = 1/3</text>
+  <rect x="40" y="574" width="300" height="602" rx="16" fill="#0f857b"/>
+  <polygon points="77,837 92,824 107,837" fill="#ffffff"/>
+  <rect x="81" y="837" width="22" height="15" fill="#ffffff"/>
+  <rect x="89" y="843" width="6" height="9" fill="#0f857b"/>
+  <text x="76" y="881" class="name" font-size="24" fill="#ffffff">Nivel de vida</text>
+  <rect x="76" y="892" width="64" height="26" rx="13" fill="#ffffff" fill-opacity="0.18"/>
+  <text x="108" y="910" text-anchor="middle" class="frac" font-size="14" fill="#ffffff">1/3</text>
+  <rect x="40" y="362" width="300" height="194" rx="16" fill="#34689e"/>
+  <polygon points="76,422 92,414 108,422 92,430" fill="#ffffff"/>
+  <path d="M83,425 L83,430 Q92,435 101,430 L101,425 Z" fill="#ffffff"/>
+  <line x1="108" y1="422" x2="108" y2="433" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="108" cy="434" r="2" fill="#ffffff"/>
+  <text x="76" y="465" class="name" font-size="24" fill="#ffffff">Educación</text>
+  <rect x="76" y="476" width="64" height="26" rx="13" fill="#ffffff" fill-opacity="0.18"/>
+  <text x="108" y="494" text-anchor="middle" class="frac" font-size="14" fill="#ffffff">1/3</text>
+  <rect x="40" y="150" width="300" height="194" rx="16" fill="#c05f3f"/>
+  <g transform="translate(77,195) scale(1.25)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#ffffff"/></g>
+  <text x="76" y="253" class="name" font-size="24" fill="#ffffff">Salud</text>
+  <rect x="76" y="264" width="64" height="26" rx="13" fill="#ffffff" fill-opacity="0.18"/>
+  <text x="108" y="282" text-anchor="middle" class="frac" font-size="14" fill="#ffffff">1/3</text>
+  <rect x="358" y="150" width="762" height="92" rx="12" fill="#fbeee7"/>
+  <rect x="358" y="160" width="6" height="72" rx="3" fill="#d97757"/>
+  <text x="384" y="184" class="title" font-size="22" fill="#8f4327">Nutrición</text>
+  <rect x="1044" y="165" width="56" height="26" rx="13" fill="#f6ddd0"/>
+  <text x="1072" y="183" text-anchor="middle" class="frac" font-size="14" fill="#8f4327">1/6</text>
+  <text x="384" y="220" font-size="18" fill="#5c463d">Algún miembro (niño o adulto) está desnutrido.</text>
+  <rect x="358" y="252" width="762" height="92" rx="12" fill="#fbeee7"/>
+  <rect x="358" y="262" width="6" height="72" rx="3" fill="#d97757"/>
+  <text x="384" y="286" class="title" font-size="22" fill="#8f4327">Mortalidad infantil</text>
+  <rect x="1044" y="267" width="56" height="26" rx="13" fill="#f6ddd0"/>
+  <text x="1072" y="285" text-anchor="middle" class="frac" font-size="14" fill="#8f4327">1/6</text>
+  <text x="384" y="322" font-size="18" fill="#5c463d">Falleció un menor de 18 años en los últimos 5 años.</text>
+  <rect x="358" y="362" width="762" height="92" rx="12" fill="#eef4fa"/>
+  <rect x="358" y="372" width="6" height="72" rx="3" fill="#6a9bcc"/>
+  <text x="384" y="396" class="title" font-size="22" fill="#274b73">Años de escolaridad</text>
+  <rect x="1044" y="377" width="56" height="26" rx="13" fill="#dae8f4"/>
+  <text x="1072" y="395" text-anchor="middle" class="frac" font-size="14" fill="#274b73">1/6</text>
+  <text x="384" y="432" font-size="18" fill="#3d4b5a">Ningún miembro completó 6 años de escolaridad.</text>
+  <rect x="358" y="464" width="762" height="92" rx="12" fill="#eef4fa"/>
+  <rect x="358" y="474" width="6" height="72" rx="3" fill="#6a9bcc"/>
+  <text x="384" y="498" class="title" font-size="22" fill="#274b73">Asistencia escolar</text>
+  <rect x="1044" y="479" width="56" height="26" rx="13" fill="#dae8f4"/>
+  <text x="1072" y="497" text-anchor="middle" class="frac" font-size="14" fill="#274b73">1/6</text>
+  <text x="384" y="534" font-size="18" fill="#3d4b5a">Algún niño no asiste hasta completar el 8.º grado.</text>
+  <rect x="358" y="574" width="762" height="92" rx="12" fill="#e6f6f4"/>
+  <rect x="358" y="584" width="6" height="72" rx="3" fill="#12b3a8"/>
+  <text x="384" y="608" class="title" font-size="22" fill="#0b5d55">Combustible para cocinar</text>
+  <rect x="1038" y="589" width="62" height="26" rx="13" fill="#cdeee9"/>
+  <text x="1069" y="607" text-anchor="middle" class="frac" font-size="14" fill="#0b5d55">1/18</text>
+  <text x="384" y="644" font-size="18" fill="#33514c">El hogar cocina con combustibles sólidos.</text>
+  <rect x="358" y="676" width="762" height="92" rx="12" fill="#e6f6f4"/>
+  <rect x="358" y="686" width="6" height="72" rx="3" fill="#12b3a8"/>
+  <text x="384" y="710" class="title" font-size="22" fill="#0b5d55">Saneamiento</text>
+  <rect x="1038" y="691" width="62" height="26" rx="13" fill="#cdeee9"/>
+  <text x="1069" y="709" text-anchor="middle" class="frac" font-size="14" fill="#0b5d55">1/18</text>
+  <text x="384" y="746" font-size="18" fill="#33514c">Sin saneamiento mejorado, o es compartido.</text>
+  <rect x="358" y="778" width="762" height="92" rx="12" fill="#e6f6f4"/>
+  <rect x="358" y="788" width="6" height="72" rx="3" fill="#12b3a8"/>
+  <text x="384" y="812" class="title" font-size="22" fill="#0b5d55">Agua potable</text>
+  <rect x="1038" y="793" width="62" height="26" rx="13" fill="#cdeee9"/>
+  <text x="1069" y="811" text-anchor="middle" class="frac" font-size="14" fill="#0b5d55">1/18</text>
+  <text x="384" y="848" font-size="18" fill="#33514c">Sin agua potable, o está a 30+ min ida y vuelta.</text>
+  <rect x="358" y="880" width="762" height="92" rx="12" fill="#e6f6f4"/>
+  <rect x="358" y="890" width="6" height="72" rx="3" fill="#12b3a8"/>
+  <text x="384" y="914" class="title" font-size="22" fill="#0b5d55">Electricidad</text>
+  <rect x="1038" y="895" width="62" height="26" rx="13" fill="#cdeee9"/>
+  <text x="1069" y="913" text-anchor="middle" class="frac" font-size="14" fill="#0b5d55">1/18</text>
+  <text x="384" y="950" font-size="18" fill="#33514c">El hogar no tiene electricidad.</text>
+  <rect x="358" y="982" width="762" height="92" rx="12" fill="#e6f6f4"/>
+  <rect x="358" y="992" width="6" height="72" rx="3" fill="#12b3a8"/>
+  <text x="384" y="1016" class="title" font-size="22" fill="#0b5d55">Vivienda</text>
+  <rect x="1038" y="997" width="62" height="26" rx="13" fill="#cdeee9"/>
+  <text x="1069" y="1015" text-anchor="middle" class="frac" font-size="14" fill="#0b5d55">1/18</text>
+  <text x="384" y="1052" font-size="18" fill="#33514c">Piso, techo o paredes con materiales precarios.</text>
+  <rect x="358" y="1084" width="762" height="92" rx="12" fill="#e6f6f4"/>
+  <rect x="358" y="1094" width="6" height="72" rx="3" fill="#12b3a8"/>
+  <text x="384" y="1118" class="title" font-size="22" fill="#0b5d55">Bienes del hogar</text>
+  <rect x="1038" y="1099" width="62" height="26" rx="13" fill="#cdeee9"/>
+  <text x="1069" y="1117" text-anchor="middle" class="frac" font-size="14" fill="#0b5d55">1/18</text>
+  <text x="384" y="1154" font-size="18" fill="#33514c">Posee pocos bienes y ningún automóvil.</text>
+  <text x="40" y="1210" font-size="12.5" fill="#6a6f77">Fuente: Alkire et al. (2025), Índice de Pobreza Multidimensional Global 2025. OPHI y PNUD.</text>
+</svg>

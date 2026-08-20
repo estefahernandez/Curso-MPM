@@ -1,0 +1,89 @@
+<svg viewBox="0 0 1230 652" xmlns="http://www.w3.org/2000/svg" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+<style>text{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;} .t{font-weight:700;}</style>
+<rect x="0" y="0" width="1230" height="652" fill="#ffffff"/>
+<rect x="0" y="0" width="410" height="6" fill="#34689e"/>
+<rect x="410" y="0" width="410" height="6" fill="#c05f3f"/>
+<rect x="820" y="0" width="410" height="6" fill="#0f857b"/>
+<text x="40" y="52" class="t" font-size="28" fill="#141413">Cómo se diseña un IPM nacional</text>
+<text x="40" y="80" font-size="15" fill="#4a4f57">Los ocho pasos del marco de OPHI, organizados en tres fases.</text>
+<line x1="40" y1="100" x2="1190" y2="100" stroke="#141413" stroke-width="2"/>
+<path d="M410,388 L422,400 L410,412" stroke="#b8bec5" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M807,388 L819,400 L807,412" stroke="#b8bec5" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="40" y="140" width="356" height="472" rx="16" fill="#eff5fb"/>
+<rect x="40" y="140" width="356" height="54" rx="16" fill="#34689e"/>
+<rect x="40" y="178" width="356" height="16" fill="#34689e"/>
+<circle cx="78" cy="167" r="15" fill="#ffffff"/>
+<text x="78" y="173" text-anchor="middle" class="t" font-size="17" fill="#34689e">A</text>
+<text x="104" y="173" class="t" font-size="18" fill="#ffffff">Marco</text>
+<text x="378" y="172" text-anchor="end" font-size="12" fill="#ffffff" opacity="0.9">Pasos 1–2</text>
+<rect x="56" y="310" width="324" height="86" rx="10" fill="#ffffff" stroke="#e6e8eb" stroke-width="1"/>
+<rect x="56" y="320" width="5" height="66" rx="2.5" fill="#6a9bcc"/>
+<circle cx="84" cy="336" r="14" fill="#34689e"/>
+<text x="84" y="341" text-anchor="middle" class="t" font-size="14" fill="#ffffff">1</text>
+<text x="110" y="340" class="t" font-size="16" fill="#274b73">Propósito y uso político</text>
+<text x="110" y="362" font-size="12.5" fill="#6a7078">Para qué servirá el índice y qué</text>
+<text x="110" y="380" font-size="12.5" fill="#6a7078">decisión de política informará.</text>
+<rect x="56" y="410" width="324" height="86" rx="10" fill="#ffffff" stroke="#e6e8eb" stroke-width="1"/>
+<rect x="56" y="420" width="5" height="66" rx="2.5" fill="#6a9bcc"/>
+<circle cx="84" cy="436" r="14" fill="#34689e"/>
+<text x="84" y="441" text-anchor="middle" class="t" font-size="14" fill="#ffffff">2</text>
+<text x="110" y="440" class="t" font-size="16" fill="#274b73">Unidad de identificación</text>
+<text x="110" y="462" font-size="12.5" fill="#6a7078">La privación se mide en el hogar</text>
+<text x="110" y="480" font-size="12.5" fill="#6a7078">y se atribuye a sus miembros.</text>
+<rect x="437" y="140" width="356" height="472" rx="16" fill="#fbf0ea"/>
+<rect x="437" y="140" width="356" height="54" rx="16" fill="#c05f3f"/>
+<rect x="437" y="178" width="356" height="16" fill="#c05f3f"/>
+<circle cx="475" cy="167" r="15" fill="#ffffff"/>
+<text x="475" y="173" text-anchor="middle" class="t" font-size="17" fill="#c05f3f">B</text>
+<text x="501" y="173" class="t" font-size="18" fill="#ffffff">Diseño de la medida</text>
+<text x="775" y="172" text-anchor="end" font-size="12" fill="#ffffff" opacity="0.9">Pasos 3–6</text>
+<rect x="453" y="210" width="324" height="86" rx="10" fill="#ffffff" stroke="#e6e8eb" stroke-width="1"/>
+<rect x="453" y="220" width="5" height="66" rx="2.5" fill="#d97757"/>
+<circle cx="481" cy="236" r="14" fill="#c05f3f"/>
+<text x="481" y="241" text-anchor="middle" class="t" font-size="14" fill="#ffffff">3</text>
+<text x="507" y="240" class="t" font-size="16" fill="#8f4327">Seleccionar dimensiones</text>
+<text x="507" y="262" font-size="12.5" fill="#6a7078">Ámbitos del bienestar que importan:</text>
+<text x="507" y="280" font-size="12.5" fill="#6a7078">educación, salud, vivienda…</text>
+<rect x="453" y="310" width="324" height="86" rx="10" fill="#ffffff" stroke="#e6e8eb" stroke-width="1"/>
+<rect x="453" y="320" width="5" height="66" rx="2.5" fill="#d97757"/>
+<circle cx="481" cy="336" r="14" fill="#c05f3f"/>
+<text x="481" y="341" text-anchor="middle" class="t" font-size="14" fill="#ffffff">4</text>
+<text x="507" y="340" class="t" font-size="16" fill="#8f4327">Elegir indicadores</text>
+<text x="507" y="362" font-size="12.5" fill="#6a7078">Variables observables que miden</text>
+<text x="507" y="380" font-size="12.5" fill="#6a7078">cada dimensión, con buenos datos.</text>
+<rect x="453" y="410" width="324" height="86" rx="10" fill="#ffffff" stroke="#e6e8eb" stroke-width="1"/>
+<rect x="453" y="420" width="5" height="66" rx="2.5" fill="#d97757"/>
+<circle cx="481" cy="436" r="14" fill="#c05f3f"/>
+<text x="481" y="441" text-anchor="middle" class="t" font-size="14" fill="#ffffff">5</text>
+<text x="507" y="440" class="t" font-size="16" fill="#8f4327">Fijar umbrales de privación</text>
+<text x="507" y="462" font-size="12.5" fill="#6a7078">La regla que define cuándo un hogar</text>
+<text x="507" y="480" font-size="12.5" fill="#6a7078">está privado en un indicador.</text>
+<rect x="453" y="510" width="324" height="86" rx="10" fill="#ffffff" stroke="#e6e8eb" stroke-width="1"/>
+<rect x="453" y="520" width="5" height="66" rx="2.5" fill="#d97757"/>
+<circle cx="481" cy="536" r="14" fill="#c05f3f"/>
+<text x="481" y="541" text-anchor="middle" class="t" font-size="14" fill="#ffffff">6</text>
+<text x="507" y="540" class="t" font-size="16" fill="#8f4327">Asignar ponderaciones</text>
+<text x="507" y="562" font-size="12.5" fill="#6a7078">El peso relativo de cada dimensión</text>
+<text x="507" y="580" font-size="12.5" fill="#6a7078">e indicador (p. ej., iguales).</text>
+<rect x="834" y="140" width="356" height="472" rx="16" fill="#e9f7f5"/>
+<rect x="834" y="140" width="356" height="54" rx="16" fill="#0f857b"/>
+<rect x="834" y="178" width="356" height="16" fill="#0f857b"/>
+<circle cx="872" cy="167" r="15" fill="#ffffff"/>
+<text x="872" y="173" text-anchor="middle" class="t" font-size="17" fill="#0f857b">C</text>
+<text x="898" y="173" class="t" font-size="18" fill="#ffffff">Cálculo y difusión</text>
+<text x="1172" y="172" text-anchor="end" font-size="12" fill="#ffffff" opacity="0.9">Pasos 7–8</text>
+<rect x="850" y="310" width="324" height="86" rx="10" fill="#ffffff" stroke="#e6e8eb" stroke-width="1"/>
+<rect x="850" y="320" width="5" height="66" rx="2.5" fill="#14b8a6"/>
+<circle cx="878" cy="336" r="14" fill="#0f857b"/>
+<text x="878" y="341" text-anchor="middle" class="t" font-size="14" fill="#ffffff">7</text>
+<text x="904" y="340" class="t" font-size="16" fill="#0b5d55">Fijar el umbral de pobreza k</text>
+<text x="904" y="362" font-size="12.5" fill="#6a7078">Cuántas privaciones ponderadas</text>
+<text x="904" y="380" font-size="12.5" fill="#6a7078">identifican a un hogar como pobre.</text>
+<rect x="850" y="410" width="324" height="86" rx="10" fill="#ffffff" stroke="#e6e8eb" stroke-width="1"/>
+<rect x="850" y="420" width="5" height="66" rx="2.5" fill="#14b8a6"/>
+<circle cx="878" cy="436" r="14" fill="#0f857b"/>
+<text x="878" y="441" text-anchor="middle" class="t" font-size="14" fill="#ffffff">8</text>
+<text x="904" y="440" class="t" font-size="16" fill="#0b5d55">Calcular, validar y comunicar</text>
+<text x="904" y="462" font-size="12.5" fill="#6a7078">Estimar H, A y M<tspan dy="4" font-size="9">0</tspan><tspan dy="-4">, probar robustez</tspan></text>
+<text x="904" y="480" font-size="12.5" fill="#6a7078">y difundir los resultados.</text>
+</svg>
