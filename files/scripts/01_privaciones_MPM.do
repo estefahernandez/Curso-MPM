@@ -85,7 +85,7 @@
     * Definiendo el universo primero, ninios en "edad escolar" (entre $lbage y $ubage años)
     gen edad_escolar = (q1_03_edad>=$lbage & q1_03_edad<=$ubage)
     bys hhid: egen cant_edadescolar = sum(edad_escolar)
-
+@estefania-variables raw
     * No matriculado: está en edad escolar pero no asiste
     gen no_matriculado = (q1_03_edad>=$lbage & q1_03_edad<=$ubage & asistencia_escolar!=1)
         replace no_matriculado=. if q1_03_edad<$lbage | q1_03_edad>$ubage //asegurandose que si no esta en edad escolar no se le considere privado ni no privado, sino missing
@@ -107,12 +107,33 @@
 ** Dimensión 2: Acceso a infraestructura
 ****************************************************
 
-**# Electricidad  
+**# Electricidad
   ****************************************************
   * Comentario: MPM (estándar), solo importa si el hogar tiene o no acceso a electricidad
   /*
     * Improved electricidad
     gen electricity = (inlist(q2_31_energiaLuz,1,2,3,4))
+
+    Validado contra Cuestionario.xlsx (hoja "2E. Caract. hogar", pregunta 2.31
+    "¿Cuál es la principal fuente de energía que se utiliza en este hogar
+    para el alumbrado?", var. q2_31_energiaLuz) y contra CleanDB_Individual_
+    POV.dta:
+
+      q2_31_energiaLuz = 1 Electricidad de la red pública -> electricity=1
+                        = 2 Placa solar                     -> electricity=1
+                        = 3 Generador (GASOLINA)             -> electricity=1
+                        = 4 Generador (GASOIL)                -> electricity=1
+                        = 5 Petróleo/keroseno                 -> electricity=0
+                        = 6 Gas (lámpara)                      -> electricity=0
+                        = 7 Batería/Pila                        -> electricity=0
+                        = 8 Vela                                 -> electricity=0
+                        = 9 Leña                                  -> electricity=0
+                        = 10 Otro                                  -> electricity=0
+
+    "electricity" ya viene creada así en CleanDB_Individual_POV.dta (no se
+    recalcula en este do-file, solo se reutiliza). Verificado: coincide
+    100% con inlist(q2_31_energiaLuz,1,2,3,4) en las 27,280 observaciones
+    de la base (tab electricity electricity_check si se recalcula aparte).
   */
 
     gen dep_infra_elec = (electricity==0) if electricity~=.

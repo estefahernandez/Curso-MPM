@@ -167,15 +167,33 @@
   /*
     dep_infra_elec = 1 (Privado) si el hogar NO tiene acceso a electricidad
     O si tuvo al menos un corte de luz el último mes. A diferencia del MPM
-    estándar (solo importa el acceso; ver 01_privaciones_MPM.do), aquí se
-    suma el corte de luz. Para replicarlo paso a paso:
+    estándar (donde solo importa el acceso), aquí se suma el corte de luz.
+    Para replicarlo paso a paso:
 
-    PASO A — Acceso a electricidad: electricity (construida a partir de
-      q2_31_energiaLuz, pregunta 2.31 "¿Cuál es la principal fuente de
-      energía... para el alumbrado?"): electricity=1 si la fuente principal
-      es 1 (red pública), 2 (placa solar), 3 (generador gasolina) o 4
-      (generador gasoil); electricity=0 en cualquier otro caso (petróleo,
-      gas/lámpara, batería, vela, leña, otro).
+    PASO A — Acceso a electricidad: electricity, construida a partir de
+      q2_31_energiaLuz (pregunta 2.31 "¿Cuál es la principal fuente de
+      energía que se utiliza en este hogar para el alumbrado?"):
+
+        gen electricity = (inlist(q2_31_energiaLuz,1,2,3,4))
+
+      Validado contra Cuestionario.xlsx (hoja "2E. Caract. hogar") y
+      contra CleanDB_Individual_POV.dta:
+
+        q2_31_energiaLuz = 1 Electricidad de la red pública -> electricity=1
+                          = 2 Placa solar                     -> electricity=1
+                          = 3 Generador (GASOLINA)             -> electricity=1
+                          = 4 Generador (GASOIL)                -> electricity=1
+                          = 5 Petróleo/keroseno                 -> electricity=0
+                          = 6 Gas (lámpara)                      -> electricity=0
+                          = 7 Batería/Pila                        -> electricity=0
+                          = 8 Vela                                 -> electricity=0
+                          = 9 Leña                                  -> electricity=0
+                          = 10 Otro                                  -> electricity=0
+
+      "electricity" ya viene creada así en CleanDB_Individual_POV.dta (no
+      se recalcula en este do-file, solo se reutiliza). Verificado:
+      coincide 100% con inlist(q2_31_energiaLuz,1,2,3,4) en las 27,280
+      observaciones de la base.
       Si electricity==0 -> dep_infra_elec=1 (privado), sin mirar 2.33.
 
     PASO B — Corte de luz el último mes: q2_33_SinElect (pregunta 2.33
@@ -184,14 +202,17 @@
       Si electricity==1 & q2_33_SinElect!=. -> dep_infra_elec se fuerza a 1
       (privado), aunque sí tenga acceso.
 
-    A verificar: la condición usa "!=." (no falta el dato), no "> 0". Si a
-    TODO hogar con electricidad se le pregunta 2.33 (incluidos los que
-    tuvieron 0 días sin luz, y ese 0 se guarda como 0 y no como missing),
-    entonces casi cualquier hogar con electricidad quedaría marcado como
-    "privado" por corte de luz. Conviene confirmar con:
+    Verificado (la condición usa "!=." y no "> 0", lo cual sí es correcto):
+    se corrió en CleanDB_Individual_POV.dta
       tab q2_33_SinElect if electricity==1, mis
-    para ver si aparecen respuestas ==0 (deberían existir si el 0 se
-    registra tal cual) o si "missing" realmente equivale a "no tuvo cortes".
+    y entre los 22,505 hogares con electricity==1, q2_33_SinElect NUNCA
+    toma el valor 0 (mínimo observado = 1 día, máximo = 30); hay 11,535
+    casos "missing" y 10,970 con un valor entre 1 y 30. Es decir, un "0
+    días sin luz" no se registra como 0 sino como missing, por lo que
+    "missing" en q2_33_SinElect equivale exactamente a "no tuvo cortes".
+    Conclusión: "!=." es equivalente a "> 0" en esta base y la regla NO
+    sobre-marca como privados a hogares con electricidad estable todo el
+    mes.
   */
     gen dep_infra_elec = (electricity==0) if electricity~=.
     replace dep_infra_elec = 1 if electricity==1 & q2_33_SinElect!=. // también privado si tuvo corte de luz el último mes
