@@ -203,6 +203,31 @@ Un hogar está privado si **ningún adulto** (en edad de haber alcanzado el grad
 menos la educación primaria.
 
 ```stata
+  1a) Indicador: Ningún adulto del hogar (de la edad de grado 9 en adelante) ha
+                   completado la educación primaria
+  Comentario:
+    * En Guinea Ecuatorial, comenzando desde los 7 años la primaria, implica que a los 15 años completo 9 grado
+    * 1. Adulto >= $eduage años
+    * 2. Nivel educativo requerido = primaria completa, Grade 9 = ESBA 3 (educat7>=3).
+
+  * Nivel Educativo alcanzado 7 categorias
+      gen educat7=.
+      *Casos que nunca han estudiado
+      replace educat7 = 1 if (inlist(q3_04_escuela,"No y tiene 20 años o menos de edad","No y es mayor de 20 años") | q3_04_escuela=="") 
+      *Casos según último grado cursado
+      replace educat7 = 1 if inlist(q3_05_grado,0,1)
+      replace educat7 = 2 if inlist(q3_05_grado,2,3,4,5,6)
+      replace educat7 = 3 if inlist(q3_05_grado,7)
+      replace educat7 = 4 if inlist(q3_05_grado,8,9,10,11,12,14)
+      replace educat7 = 5 if inlist(q3_05_grado,13,15)
+      replace educat7 = 6 if inlist(q3_05_grado,17)
+      replace educat7 = 7 if inlist(q3_05_grado,16,18,19)
+        
+    label define educat7 1 "Ninguno" 2 "Primaria incompleta" 3 "Primaria completa" 4 "Secundaria incompleta" 5 "Secundaria completa" 6 "Post-secundaria pero no universidad" 7 "Universidad (finalizada o no)"
+    label val educat7 educat7 
+    label var educat7 "Mayor nivel educación alcanzado (7 categorias)"
+
+  
 * Umbral de edad para "adulto" a efectos de logro educativo
 global eduage 15   // primaria inicia a los 7 años; edad mínima para considerar "adulto"
 
