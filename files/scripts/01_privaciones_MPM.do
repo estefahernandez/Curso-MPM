@@ -1,5 +1,5 @@
 /*==================================================================
- PROYECTO:      Índice de Pobreza Multidimensional (IPM / MPM)
+ PROYECTO:      Medida de Pobreza Multidimensional (IPM / MPM)
                 Guinea Ecuatorial (ENH2-2023)
  SCRIPT:        01_privaciones_MPM.do
  AUTOR ORIGINAL: Banco Mundial, proyecto GNQ-PA
@@ -41,9 +41,9 @@
   ** 1a) Indicador: Ningún adulto del hogar (de la edad de grado 9 en adelante) ha
   *                 completado la educación primaria
   * Comentario:
-    * En Guinea Ecuatorial, comenzando desde los 7 años, implica que a los 15 años completo 9 grado
+    * En Guinea Ecuatorial, comenzando desde los 7 años la primaria, implica que a los 15 años completo 9 grado
     * 1. Adulto >= $eduage años
-    * 2. Nivel educativo requerido = primaria completa (educat7>=3).
+    * 2. Nivel educativo requerido = primaria completa, Grade 9 = ESBA 3 (educat7>=3).
 
   /*
       * Nivel Educativo alcanzado 7 categorias

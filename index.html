@@ -328,7 +328,7 @@ p, li {
 <section id="por-qué-una-medida-multidimensional" class="level3">
 <h3 class="anchored" data-anchor-id="por-qué-una-medida-multidimensional">¿Por qué una medida multidimensional?</h3>
 <p>El enfoque monetario define como pobre a quien vive con un ingreso o consumo por debajo de una línea de pobreza. Es una medida potente pero incompleta: dos hogares con el mismo ingreso pueden vivir realidades muy distintas (uno puede tener ingreso suficiente y aun así carecer de agua potable, saneamiento, electricidad o educación). Siguiendo el <strong>enfoque de capacidades de Amartya Sen</strong>, lo que importa no es solo cuánto tiene una persona, sino qué puede efectivamente hacer y ser con lo que tiene. La pobreza multidimensional mide <strong>privaciones simultáneas y superpuestas</strong> en salud, educación y nivel de vida, entre otras dimensiones, y permite responder no solo cuántos son pobres, sino en qué lo son <span class="citation" data-cites="sen1999development">(<a href="#ref-sen1999development" role="doc-biblioref">Sen, 1999</a>)</span>.</p>
-<div id="fig-estructura-portada" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Diagrama de la estructura del IPM con las dimensiones de educación, infraestructura e ingreso monetario, sus indicadores, umbrales y pesos.">
+<div id="fig-estructura-portada" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Diagrama de la estructura del IPM con las dimensiones de educación, infraestructura e ingreso monetario, sus indicadores, umbrales y pesos." data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-estructura-portada-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="files/estructura_ipm_sesion1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figura&nbsp;1: Estructura de la Medida de Pobreza Multidimensional de Guinea Ecuatorial: dimensiones, indicadores, umbrales de privación y ponderaciones."><img src="files/estructura_ipm_sesion1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:95.0%" alt="Diagrama de la estructura del IPM con las dimensiones de educación, infraestructura e ingreso monetario, sus indicadores, umbrales y pesos."></a>
@@ -422,7 +422,7 @@ Figura&nbsp;1: Estructura de la Medida de Pobreza Multidimensional de Guinea Ecu
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>El IPM Global 2025 cubre 109 países <span class="citation" data-cites="alkire2025globalmpi">(<a href="#ref-alkire2025globalmpi" role="doc-biblioref">Alkire et&nbsp;al., 2025</a>)</span>. Usa tres dimensiones con peso <span class="math inline">\(1/3\)</span> cada una, y reparte ese peso a partes iguales entre los indicadores de cada dimensión.</p>
-<div id="fig-estructura-global" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Infográfico con las tres dimensiones del IPM Global (salud, educación y nivel de vida), sus indicadores y pesos.">
+<div id="fig-estructura-global" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Infográfico con las tres dimensiones del IPM Global (salud, educación y nivel de vida), sus indicadores y pesos." data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-estructura-global-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="files/estructura_ipm_global.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figura&nbsp;2: Estructura del IPM Global (OPHI-PNUD): dimensiones, indicadores y ponderaciones."><img src="files/estructura_ipm_global.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:95.0%" alt="Infográfico con las tres dimensiones del IPM Global (salud, educación y nivel de vida), sus indicadores y pesos."></a>
@@ -448,7 +448,7 @@ Figura&nbsp;2: Estructura del IPM Global (OPHI-PNUD): dimensiones, indicadores y
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Las tres dimensiones del MPM Banco Mundial, teniendo en cuenta los módulos de la encuesta y su correspondencia con las dimensiones</p>
-<div id="fig-estructura-mpm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Infográfico con las tres dimensiones del MPM (educación, infraestructura y monetaria), sus indicadores, pesos y umbrales de privación.">
+<div id="fig-estructura-mpm" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Infográfico con las tres dimensiones del MPM (educación, infraestructura y monetaria), sus indicadores, pesos y umbrales de privación." data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-estructura-mpm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="files/estructura_ipm_sesion1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figura&nbsp;3: Estructura del MPM de Guinea Ecuatorial: dimensiones, indicadores, pesos y umbrales de privación."><img src="files/estructura_ipm_sesion1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:95.0%" alt="Infográfico con las tres dimensiones del MPM (educación, infraestructura y monetaria), sus indicadores, pesos y umbrales de privación."></a>
@@ -555,19 +555,44 @@ Figura&nbsp;3: Estructura del MPM de Guinea Ecuatorial: dimensiones, indicadores
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Un hogar está privado si <strong>ningún adulto</strong> (en edad de haber alcanzado el grado 9) ha completado al menos la educación primaria.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>* Umbral <span class="kw">de</span> edad para <span class="st">"adulto"</span> a efectos <span class="kw">de</span> logro educativo</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> eduage 15   <span class="co">// primaria inicia a los 7 años; edad mínima para considerar "adulto"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>* Individuo con nivel básico <span class="kw">de</span> educación (primaria completa o más)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> temp2 = 1 <span class="kw">if</span> q1_03_edad&gt;=<span class="ot">$eduage</span> &amp; q1_03_edad~=. &amp; educat7&gt;=3 &amp; educat7~=.</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>* Cantidad <span class="kw">de</span> adultos con nivel apropiado por hogar</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">bys</span> hhid: <span class="kw">egen</span> temp3 = <span class="kw">sum</span>(temp2)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>* El hogar está privado si NINGÚN adulto alcanza <span class="fu">el</span> nivel</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> dep_educ_com = 0</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> dep_educ_com = 1 <span class="kw">if</span> temp3==0</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>la <span class="kw">var</span> dep_educ_com <span class="st">"MPM: Privado si el hogar NO tiene adultos $eduage+ con primaria completa"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  1a) Indicador: Ningún adulto del hogar (<span class="kw">de</span> la edad <span class="kw">de</span> grado 9 en adelante) ha</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                   completado la educación primaria</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  Comentario:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    * En Guinea Ecuatorial, comenzando desde los 7 años la primaria, implica que a los 15 años completo 9 grado</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    * 1. Adulto &gt;= <span class="ot">$eduage</span> años</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    * 2. Nivel educativo requerido = primaria completa, Grade 9 = ESBA 3 (educat7&gt;=3).</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  * Nivel Educativo alcanzado 7 categorias</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>      <span class="kw">gen</span> educat7=.</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      *Casos que nunca han estudiado</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="kw">replace</span> educat7 = 1 <span class="kw">if</span> (<span class="fu">inlist</span>(q3_04_escuela,<span class="st">"No y tiene 20 años o menos de edad"</span>,<span class="st">"No y es mayor de 20 años"</span>) | q3_04_escuela==<span class="st">""</span>) </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      *Casos según último grado cursado</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="kw">replace</span> educat7 = 1 <span class="kw">if</span> <span class="fu">inlist</span>(q3_05_grado,0,1)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      <span class="kw">replace</span> educat7 = 2 <span class="kw">if</span> <span class="fu">inlist</span>(q3_05_grado,2,3,4,5,6)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      <span class="kw">replace</span> educat7 = 3 <span class="kw">if</span> <span class="fu">inlist</span>(q3_05_grado,7)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      <span class="kw">replace</span> educat7 = 4 <span class="kw">if</span> <span class="fu">inlist</span>(q3_05_grado,8,9,10,11,12,14)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="kw">replace</span> educat7 = 5 <span class="kw">if</span> <span class="fu">inlist</span>(q3_05_grado,13,15)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      <span class="kw">replace</span> educat7 = 6 <span class="kw">if</span> <span class="fu">inlist</span>(q3_05_grado,17)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      <span class="kw">replace</span> educat7 = 7 <span class="kw">if</span> <span class="fu">inlist</span>(q3_05_grado,16,18,19)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">label</span> <span class="kw">define</span> educat7 1 <span class="st">"Ninguno"</span> 2 <span class="st">"Primaria incompleta"</span> 3 <span class="st">"Primaria completa"</span> 4 <span class="st">"Secundaria incompleta"</span> 5 <span class="st">"Secundaria completa"</span> 6 <span class="st">"Post-secundaria pero no universidad"</span> 7 <span class="st">"Universidad (finalizada o no)"</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">label</span> val educat7 educat7 </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">label</span> <span class="kw">var</span> educat7 <span class="st">"Mayor nivel educación alcanzado (7 categorias)"</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>* Umbral <span class="kw">de</span> edad para <span class="st">"adulto"</span> a efectos <span class="kw">de</span> logro educativo</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> eduage 15   <span class="co">// primaria inicia a los 7 años; edad mínima para considerar "adulto"</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>* Individuo con nivel básico <span class="kw">de</span> educación (primaria completa o más)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> temp2 = 1 <span class="kw">if</span> q1_03_edad&gt;=<span class="ot">$eduage</span> &amp; q1_03_edad~=. &amp; educat7&gt;=3 &amp; educat7~=.</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>* Cantidad <span class="kw">de</span> adultos con nivel apropiado por hogar</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="kw">bys</span> hhid: <span class="kw">egen</span> temp3 = <span class="kw">sum</span>(temp2)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>* El hogar está privado si NINGÚN adulto alcanza <span class="fu">el</span> nivel</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> dep_educ_com = 0</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> dep_educ_com = 1 <span class="kw">if</span> temp3==0</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>la <span class="kw">var</span> dep_educ_com <span class="st">"MPM: Privado si el hogar NO tiene adultos $eduage+ con primaria completa"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -880,7 +905,7 @@ H = \frac{q}{n}, \qquad A = \frac{\sum_{i=1}^{n} c_i(k)}{q}, \qquad M_0 = H \tim
 </div>
 </div>
 </div>
-<div id="fig-flujo-af" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Diagrama de flujo con matriz de privaciones, puntaje ponderado, la decisión c_i ≥ k, las ramas pobre / no pobre, y el cálculo de H, A y M0 con sus descomposiciones.">
+<div id="fig-flujo-af" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Diagrama de flujo con matriz de privaciones, puntaje ponderado, la decisión c_i ≥ k, las ramas pobre / no pobre, y el cálculo de H, A y M0 con sus descomposiciones." data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-flujo-af-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="files/flujo_af.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figura&nbsp;4: Flujo del método Alkire-Foster: de la matriz de privaciones a H, A y M_0, aplicando el doble corte (k = 1/3)."><img src="files/flujo_af.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Diagrama de flujo con matriz de privaciones, puntaje ponderado, la decisión c_i ≥ k, las ramas pobre / no pobre, y el cálculo de H, A y M0 con sus descomposiciones."></a>
@@ -1359,7 +1384,7 @@ indicator |     hd     hdk
 <div id="callout-32" class="callout-32-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Los do-files contemplan una versión <strong>MPM+</strong> con umbrales más exigentes: logro de secundaria (ESBA 4) en vez de primaria, matrícula que penaliza el retraso escolar, electricidad que penaliza cortes de suministro, y una línea monetaria más alta (8,30 en PPA 2021 en lugar de 3,00). El mismo marco AF admite umbrales distintos según la ambición de la política.</p>
-<div id="fig-estructura-mpmplus" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Infográfico con las tres dimensiones del MPM+ (educación, infraestructura y monetaria), sus indicadores, pesos y umbrales de privación.">
+<div id="fig-estructura-mpmplus" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Infográfico con las tres dimensiones del MPM+ (educación, infraestructura y monetaria), sus indicadores, pesos y umbrales de privación." data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-estructura-mpmplus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="files/estructura_ipm_mpmplus.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figura&nbsp;5: Estructura del MPM+ de Guinea Ecuatorial: dimensiones, indicadores, pesos y umbrales de privación."><img src="files/estructura_ipm_mpmplus.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:95.0%" alt="Infográfico con las tres dimensiones del MPM+ (educación, infraestructura y monetaria), sus indicadores, pesos y umbrales de privación."></a>
@@ -1380,7 +1405,7 @@ Figura&nbsp;5: Estructura del MPM+ de Guinea Ecuatorial: dimensiones, indicadore
 <section id="pasos-para-diseñar-un-ipm-nacional-marco-ophi" class="level4">
 <h4 class="anchored" data-anchor-id="pasos-para-diseñar-un-ipm-nacional-marco-ophi">Pasos para diseñar un IPM nacional (marco OPHI)</h4>
 <p>Marco de OPHI para el diseño de un IPM nacional <span class="citation" data-cites="undpophi2019handbook">(<a href="#ref-undpophi2019handbook" role="doc-biblioref">UNDP &amp; OPHI, 2019</a>)</span>:</p>
-<div id="fig-pasos-ipm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Infográfico con los ocho pasos para diseñar un IPM nacional agrupados en tres fases: marco (propósito y unidad), diseño de la medida (dimensiones, indicadores, umbrales y ponderaciones) y cálculo y difusión (umbral k y estimación).">
+<div id="fig-pasos-ipm" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Infográfico con los ocho pasos para diseñar un IPM nacional agrupados en tres fases: marco (propósito y unidad), diseño de la medida (dimensiones, indicadores, umbrales y ponderaciones) y cálculo y difusión (umbral k y estimación)." data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pasos-ipm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="files/pasos_ipm.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figura&nbsp;6: Cómo se diseña un IPM nacional: los ocho pasos del marco de OPHI, en tres fases (marco, diseño de la medida, y cálculo y difusión)."><img src="files/pasos_ipm.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Infográfico con los ocho pasos para diseñar un IPM nacional agrupados en tres fases: marco (propósito y unidad), diseño de la medida (dimensiones, indicadores, umbrales y ponderaciones) y cálculo y difusión (umbral k y estimación)."></a>
